@@ -1,6 +1,5 @@
 /*
-    Alunos: Jackson Jardel Gonçalves Leste 
-    e Diogo Bandeira Santana 
+    Alunos: Jackson Jardel Gonçalves Leste e Diogo Santana Bandeira Moura 
 
 
 */
