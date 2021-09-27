@@ -25,7 +25,7 @@ void excluir();
 int buscaId();
 int buscaEmail();
 int verificaEmail(char *email);
-void imprimeUmUser(int posicao);
+void imprimeUmUser(int posicao, int pausa);
 void editar();
 int comparaEmail(int pos);
 int stricmp(const char *a, const char *b);
@@ -79,14 +79,12 @@ int main(void){
             // buscaId()
             limpaTela();
             header("BUSCAR USUARIO POR ID");
-            imprimeUmUser(buscaId());
-            pause();
+            imprimeUmUser(buscaId(), 1);
             break;
         case 5:
             limpaTela();
             header("BUSCAR USUARIO POR EMAIL");
-            imprimeUmUser(buscaEmail());
-            pause();
+            imprimeUmUser(buscaEmail(), 1);
             break;
         case 6:
             imprimeUsers();
@@ -114,9 +112,9 @@ int main(void){
 }
 
 void header(char *palavra){
-    printf("-------------------------------------------\n");          
+    printf("-------------------------------------------------------------------\n");          
     printf("               %s\n", palavra);
-    printf("-------------------------------------------\n");
+    printf("-------------------------------------------------------------------\n");
 }
 
 
@@ -314,7 +312,7 @@ void editar(){
         limpaTela();
         header("EDITAR USUARIO");
 
-        imprimeUmUser(pos);
+        imprimeUmUser(pos, 0);
 
         if(pos >= 0){
             do{
@@ -410,7 +408,7 @@ void editar(){
         limpaTela();
         header("EXCLUIR USUARIO");
 
-        imprimeUmUser(pos);
+        imprimeUmUser(pos, 0);
         if(pos >= 0){
             do{
                 fflush(stdin);
@@ -477,7 +475,6 @@ void editar(){
         if (posicao < 0){
             limpaTela();
             printf("Id nao encontrado!\n");
-            pause();
         }
 
 
@@ -510,7 +507,6 @@ int buscaEmail(){
     if (posicao < 0){
         limpaTela();
         printf("Email nao encontrado\n");
-        pause();
     }
 
     return posicao;
@@ -518,7 +514,7 @@ int buscaEmail(){
 }
 
 
-void imprimeUmUser(int posicao){
+void imprimeUmUser(int posicao, int pausa){
     
     if(posicao >= 0){
     
@@ -533,6 +529,9 @@ void imprimeUmUser(int posicao){
             }  
             printf("\nId: %d \nNome: %s\nEmail: %s\nSexo: %s\nEndereco: %s\nAltura: %.2lfm\nVacinado: %s\n", id[posicao], nome[posicao], email[posicao], sexo[posicao], endereco[posicao], altura[posicao], imprimeVacina);
         printf("-------------------------------------------------------------------------------------------------\n");
+    }
+    if (pausa == 1){
+        pause();
     }
 }
 
